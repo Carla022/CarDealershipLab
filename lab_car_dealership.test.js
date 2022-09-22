@@ -1,34 +1,54 @@
 //Import the Car class
 // test to make sure you can access each property in a Car object:
 
+//Write tests for Dealership's methods also:
+
 const {
-    Car
+    mojo,
+    bolinhas,
+    jas,
+    motors4U
  } = require('./lab_car_dealership');
 
 
 describe('Car class test properties1 suite', () => { 
   
     test('can access the property manufacturer', () => {
-     const expected = this.manufacturer;
-     const actual = Car('Vauxhall Corsa', 10000, ' 1.2 L 3-cylinder')
-      expect(actual).toBe(expected);
+     expected = 'Vauxhall';
+    actual = mojo.manufacturer;
+    expect(actual).toBe(expected);
     })
-});
 
-describe('Car class test properties2 suite', () => { 
-  
     test('can access the property price', () => {
-     const expected = this.price;
-     const actual = Car('Audi', 38905, '2.0 l 4-cylinder')
-      expect(actual).toBe(expected);
+        expected = 38905;
+        actual = bolinhas.price;
+       expect(actual).toBe(expected);
+    })
+
+    test('can access the property engine Type', () => {
+        expected = '1.0 l 3-cylinder';
+        actual = jas.engineType;
+       expect(actual).toBe(expected);
     })
 });
 
-describe('Car class test properties2 suite', () => { 
-  
-    test('can access the property engine Type', () => {
-     const expected = this.engineType;
-     const actual = Car('Renault', 11500, '1.0 l 3-cylinder')
-      expect(actual).toBe(expected);
+
+describe('Dealership class test methods', () => {
+    test('Can get dealership name/title', () => {
+        const expected = "Motors4U dealership";
+        const actual = motors4U.title;
+        expect(actual).toBe(expected);
+    })
+
+    test('Count the number of cars in stock', () => {
+        const expected = 2;
+        const actual = motors4U.countStock;
+        expect(actual).toBe(expected);
+    })
+
+    test('Can add a car to Motors4U stock', () => {
+        const expected = 3;
+        const actual = motors4U.addCar(mojo);
+        expect(actual).toBe(expected);
     })
 });
