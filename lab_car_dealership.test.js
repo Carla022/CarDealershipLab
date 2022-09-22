@@ -4,51 +4,75 @@
 //Write tests for Dealership's methods also:
 
 const {
-    mojo,
-    bolinhas,
-    jas,
-    motors4U
+    Car,
+    Dealership
  } = require('./lab_car_dealership');
 
 
-describe('Car class test properties1 suite', () => { 
-  
+describe('Car class test properties suite', () => { 
+
     test('can access the property manufacturer', () => {
-     expected = 'Vauxhall';
-    actual = mojo.manufacturer;
-    expect(actual).toBe(expected);
+     const expected = this.manufacturer;
+     const actual = Car('Vauxhall Corsa', 10000, ' 1.2 L 3-cylinder')
+      expect(actual).toBe(expected);
     })
 
     test('can access the property price', () => {
-        expected = 38905;
-        actual = bolinhas.price;
-       expect(actual).toBe(expected);
-    })
+        const expected = this.price;
+        const actual = Car('Audi', 38905, '2.0 l 4-cylinder')
+         expect(actual).toBe(expected);
+       })
 
-    test('can access the property engine Type', () => {
-        expected = '1.0 l 3-cylinder';
-        actual = jas.engineType;
-       expect(actual).toBe(expected);
-    })
+       test('can access the property engine Type', () => {
+        const expected = this.engineType;
+        const actual = Car('Renault', 11500, '1.0 l 3-cylinder')
+         expect(actual).toBe(expected);
+       })
+
 });
 
 
 describe('Dealership class test methods', () => {
-    test('Can get dealership name/title', () => {
-        const expected = "Motors4U dealership";
-        const actual = motors4U.title;
-        expect(actual).toBe(expected);
-    })
-
     test('Count the number of cars in stock', () => {
-        const expected = 2;
-        const actual = motors4U.countStock;
+
+        let title = "Motors4U Dealership";
+        let maximumCars = 12;
+        let currentCarStock = [new Car('Vauxhall Corsa', 10000, ' 1.2 L 3-cylinder'), new Car('Audi', 38905, '2.0 l 4-cylinder'), new Car ('Renault', 11500, '1.0 l 3-cylinder')]
+
+        //make new dealership variable:
+
+        let motors4U = new Dealership(title, maxNumberOfCars, currentCarStock)
+
+        const expected = 3;
+        const actual = motors4U.countCarStock;
+        expect(actual).toBe(expected);
+
+     })
+
+});
+
+describe('Dealership class test methods', () => {
+    test('Can add car to  stock', () => {
+
+        let title = "Motors4U Dealership";
+        let maximumCars = 12;
+        let currentCarStock = [new Car('Vauxhall Corsa', 10000, ' 1.2 L 3-cylinder'), new Car('Audi', 38905, '2.0 l 4-cylinder'), new Car ('Renault', 11500, '1.0 l 3-cylinder')]
+
+        let carToAdd = [new Car("BMW", 62200, "3.0 l 6-cylinder"), new Car ("Peugeot", 2000, "954 cc XV I4"), new Car("Ford", 21000, "1.5 l 3-cylinder")]
+
+        let Motors4U = new Dealership(title, maxNumberOfCars, currentCarStock) 
+
+        ///want to add Ford car index 2
+        motors4U.addCarToStock(carAvailableToAdd[2])    
+        
+        const actual =  motors4U.countCarsInStock()   
+        const expected = 6;                               
         expect(actual).toBe(expected);
     })
 
-    test('Can add a car to Motors4U stock', () => {
-        const expected = 3;
-        const actual = motors4U.addCar(mojo);
-        expect(actual).toBe(expected);
-    })
+
+     
+
 });
+
+ 
