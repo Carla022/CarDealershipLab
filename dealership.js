@@ -4,35 +4,30 @@
 //Constructor function:
 
 const Dealership = function(title, maxNumberOfCars, currentCarStock){
+
     //PROPERTIES
-    this.title = title;
-    this.maxNumberOfCars = maxNumberOfCars;
-    this.currentCarStock = currentCarStock;
+    this._title = title;
+    this._maxNumberOfCars = maxNumberOfCars;
+    this._currentCarStock = null;
 }
 
 //METHODS (behaviours)
+
+//what is a prototype? all of the objects inerited will have a prototpe property -prototype allows you to add new properties and methods to arrays.
+//prototype is a property available with all JavaScript objects.
+
+
 // Count the number of cars in stock:
+//currentCarStock is an array
+Dealership.prototype.countCarStock = function() { return this.currentCarStock.length };
 
-//what is a prototype? all of the objects inerited will have a prototpe property
-Dealership.prototype.countCarStock = function() {
-    //currentCarStock is an array
-    return this.currentCarStock.length;
-
-}
-
-//add a car to stock(if the number of cars in stock is < its max capacity, push a car):
-
-Dealership.prototype.addCarToStock = function(car)  {
-    if(this.countCarStock() < this.maxNumberOfCars){
-        this.cars.push(car);
-    }
+//add a car to stock:
+Dealership.prototype.addCarToStock = function(car) { this.currentCarStock.push(car)} //< this.maxNumberOfCars){this.cars.push(car); }
     
-}
 
 // Return an array containing each car's manufacturer:
 
-Dealership.prototype.CarManufacturer = function()  {
-    let arrOfCarsManufacturer = []; 
+Dealership.prototype.CarManufacturer = function()  { let arrOfCarsManufacturer = []; 
     let arr = this.currentCarStock;
   
    for(vehicle in arr){ arrOfCarsManufacturer.push(arr[vehicle].manufacturer);
@@ -67,11 +62,11 @@ Dealership.prototype.totalStockCarsValue = function ()  {
 
 //new car variable
 
-const mojo = new Car('Vauxhall Corsa', 10000, ' 1.2 L 3-cylinder');
-const bolinhas = new Car('Audi', 38905, '2.0 l 4-cylinder');
-const jas = new Car('Renault', 11500, '1.0 l 3-cylinder');
+// const mojo = new Car('Vauxhall Corsa', 10000, ' 1.2 L 3-cylinder');
+// const bolinhas = new Car('Audi', 38905, '2.0 l 4-cylinder');
+// const jas = new Car('Renault', 11500, '1.0 l 3-cylinder');
 
-let carArray = [mojo, bolinhas, jas];
+// let carArray = [mojo, bolinhas, jas];
 
 
 module.exports = { 
