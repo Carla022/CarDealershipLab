@@ -1,14 +1,3 @@
-//Create Car class with manufacturer, price and engine type properties:
-
-const Car = function(manufacturer, price, engineType){
-    //PROPERTIES
-    let_manufacturer = manufacturer;
-    let_price = price;
-    let_engineType = engineType;
-
-}
-
-
 
 // Create a Dealership class with name, maximum number of cars it can have and the cars currently in stock:
 
@@ -24,16 +13,20 @@ const Dealership = function(title, maxNumberOfCars, currentCarStock){
 //METHODS (behaviours)
 // Count the number of cars in stock:
 
+//what is a prototype? all of the objects inerited will have a prototpe property
 Dealership.prototype.countCarStock = function() {
     //currentCarStock is an array
     return this.currentCarStock.length;
 
 }
 
-//add a car to stock:
+//add a car to stock(if the number of cars in stock is < its max capacity, push a car):
 
 Dealership.prototype.addCarToStock = function(car)  {
-    this.currentCarStock.push(car);
+    if(this.countCarStock() < this.maxNumberOfCars){
+        this.cars.push(car);
+    }
+    
 }
 
 // Return an array containing each car's manufacturer:
@@ -82,6 +75,5 @@ let carArray = [mojo, bolinhas, jas];
 
 
 module.exports = { 
-    Car,
     Dealership
 };
