@@ -64,19 +64,21 @@ describe('Dealership class test methods', () => {
         let maxNumberOfCars = 8;
         let currentCarStock = [new Car('Ferrari', 225897, 'F136 V8'), new Car('Mercedes benz', 41445, '2.0 l 4-cylinder diesel'), new Car ('Volkswagen', 25290, '1395 cc')]
 
-        let carToAdd = [new Car("BMW", 62200, "3.0 l 6-cylinder"), new Car ("Peugeot", 2000, "954 cc XV I4"), new Car("Ford", 21000, "1.5 l 3-cylinder")]
+        let dealership = new Dealership(title, maxNumberOfCars, currentCarStock) 
 
-        let dealer = new Dealership(title, maxNumberOfCars, currentCarStock) 
+        const actual =  dealership.carsManufacturer();     
+        const expected = ['Ferrari', 'Mercedes benz', 'Volkswagen' ]; 
+        //toStrictEqual: replaced the toBe method with toStrictEqual to make a deep equality comparison:
+        /*
+            toBe:
+        expect(function(array1)).toBe('one result')
 
-        ///want to add Ford car index 2
-        motors4U.addCarToStock(carAvailableToAdd[2])    
+            toStrictEqual:
+        expect(function(array2)).toStrictEqual(['more than one', 'more than one']);
         
-        const actual =  dealer.filterByManufacturer()     
-        const expected = ['BMW', 'Peugeot', 'Ford' ];                                
+        */
         expect(actual).toStrictEqual(expected);
     })
-
-
 
 });
 

@@ -27,15 +27,8 @@ Dealership.prototype.addCarToStock = function(car) { this.currentCarStock.push(c
 
 // Return an array containing each car's manufacturer:
 
-Dealership.prototype.filterByManufacturer = function()  { 
-    let arrOfCarManufacturers = []; 
-    let arr = this.currentCarStock;
-  
-   for(vehicle in arr){ arrOfCarManufacturers.push(arr[vehicle].manufacturer);
-}
-   
-return arrOfCarManufacturers;
-
+Dealership.prototype.carsManufacturer = function()  { 
+    return this.currentCarStock.map((currentCarStock) => currentCarStock.manufacturer)
 };
 
 // Find all the cars from a given manufacturer:
