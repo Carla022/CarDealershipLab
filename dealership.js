@@ -6,9 +6,9 @@
 const Dealership = function(title, maxNumberOfCars, currentCarStock){
 
     //PROPERTIES
-    this._title = title;
-    this._maxNumberOfCars = maxNumberOfCars;
-    this._currentCarStock = null;
+    this.title = title;
+    this.tmaxNumberOfCars = maxNumberOfCars;
+    this.currentCarStock = currentCarStock;
 }
 
 //METHODS (behaviours)
@@ -27,13 +27,14 @@ Dealership.prototype.addCarToStock = function(car) { this.currentCarStock.push(c
 
 // Return an array containing each car's manufacturer:
 
-Dealership.prototype.CarManufacturer = function()  { let arrOfCarsManufacturer = []; 
+Dealership.prototype.filterByManufacturer = function()  { 
+    let arrOfCarManufacturers = []; 
     let arr = this.currentCarStock;
   
-   for(vehicle in arr){ arrOfCarsManufacturer.push(arr[vehicle].manufacturer);
+   for(vehicle in arr){ arrOfCarManufacturers.push(arr[vehicle].manufacturer);
 }
    
-return arrOfCarsManufacturer;
+return arrOfCarManufacturers;
 
 };
 
